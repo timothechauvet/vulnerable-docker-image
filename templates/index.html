@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Injection Demo App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<script>
+    $('form').submit(function (e) {
+        if (!$('#username').val()) {
+            e.preventDefault();
+            alert('Please enter a username.');
+        }
+    });
+</script>
+
+<body>
+    <div class="container mt-5">
+        <h1>SQL Injection Demo</h1>
+        <form action="/" method="get">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" name="username">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <br>
+        {% if users %}
+        <h2>Results:</h2>
+        <ul>
+            {% for user in users %}
+            <li>{{ user.username }} - {{ user.email }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</body>
+
+</html>
