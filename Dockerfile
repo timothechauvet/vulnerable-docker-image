@@ -10,9 +10,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copier l'application dans le conteneur
 COPY app.py /app/
+COPY templates/index.html /app/templates/
 
-# Exposer le port 5000 (port par défaut de Flask)
-EXPOSE 5000
+# Exposer le port 5001
+EXPOSE 5001
 
 # Commande pour exécuter l'application
 CMD ["python", "app.py"]
